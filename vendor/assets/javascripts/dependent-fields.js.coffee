@@ -11,7 +11,7 @@ toggle = ($parent, showOrHide, method, duration) ->
     $parent.removeClass 'js-dependent-fields-hidden'
     $parentVisible = $parent.find(parentVisibleSelector)
     if method != 'hide' # disable or default
-      $fieldsAndBtns = $parentVisible.find(fieldsAndBtnsSelector)
+      $fieldsAndBtns = $parentVisible.find(fieldsAndBtnsSelector).add($parentVisible.filter(fieldsAndBtnsSelector))
       # only enable if it was enabled before hiding
       $fieldsAndBtns.filter("[data-dependent-fields-disabled='no']").prop('disabled', false)
       $fieldsAndBtns.removeAttr('data-dependent-fields-disabled')
